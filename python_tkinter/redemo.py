@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 """Basic regular expression demonstration facility (Perl style syntax)."""
 
-from Tkinter import *
+from tkinter import *
 import re
+
+# Copied from https://github.com/python/cpython/blob/2.7/Tools/scripts/redemo.py
+# Note made some changes to make it to get it to work with Python 3
+# The regex compile option checkboxes are not working correctly and will need to be fixed.
+
 
 class ReDemo:
 
@@ -92,10 +97,11 @@ class ReDemo:
             self.boxes.append(box)
             self.vars.append(var)
 
+
     def getflags(self):
         flags = 0
         for var in self.vars:
-            flags = flags | var.get()
+            flags = flags |  var.get()
         flags = flags
         return flags
 
@@ -105,10 +111,10 @@ class ReDemo:
                                        self.getflags())
             bg = self.promptdisplay['background']
             self.statusdisplay.config(text="", background=bg)
-        except re.error, msg:
+        except re.error as ex:
             self.compiled = None
             self.statusdisplay.config(
-                    text="re.error: %s" % str(msg),
+                    text=str(ex),
                     background="red")
         self.reevaluate()
 
