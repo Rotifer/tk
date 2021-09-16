@@ -50,6 +50,9 @@ remain constant
 
 ## Configuring geometry _pack_ options
 
+
+__lesson001_eg002.pl__
+
 ```{perl}
 use Tk;
 use Modern::Perl;
@@ -65,4 +68,79 @@ behaviour changes
 
 ![Image re-sizing](https://github.com/Rotifer/tk/blob/main/perl_tk/img/lesson001_eg002.png)
 
+__"
+For now, remember that the combination of expand=YES and fill=BOTH is perhaps the most common setting; it means “expand my space allocation to occupy all available space on my side, and stretch me to fill the expanded space in both directions.”__
+
+We can later add or change options for any widget using the _configure_ method
+
+## Buttons and actions
+
+We can trigger an action by doing something such as clicking a button
+
+__lesson001_eg003.l__
+
+```{perl}
+use Tk;
+use Modern::Perl;
+my $mw = MainWindow->new();
+my $lbl = $mw->Label();
+my $lbx = $mw->Listbox(-selectmode => "single");
+$lbx->insert('end', keys %ENV);
+my $btn = $mw->Button( -text => 'Show user',
+                	-command => sub{
+				        my $env_key = get_selected_opt($lbx);
+		                        $lbl->configure(-text => $ENV{ $env_key })});
+$lbx->pack();
+$btn->pack();
+$lbl->pack();
+MainLoop();
+
+sub get_selected_opt {
+    my $lbx = shift;
+    my $env_key;
+    for my $opt ($lbx->curselection()) {
+      $env_key = $lbx->get($opt);
+    }
+    return $env_key    
+}
+```
+
+![Display _%ENV_ values](https://github.com/Rotifer/tk/blob/main/perl_tk/img/lesson001_eg003.png)
+
+
+Here is a GUI that actually does something useful and demonstrates the central features of any GUI application:
+
+- When launched it populates a listbox with the keys of Perl's builtin ___%ENV___ hash variable to display the names of a range of system settings
+- The use can select a single value in the listbox
+- When the button is clicked the value for the user's selection is displayed in a lisbox
+- The button click action or _event_ in GUI parlance, gets the listbox selected value, passes the listbox instance as an argument to a named  subroutine that returns the value for the selected item
+- The value displayed in the label is the result of a simle key lookup on the _%ENV_ hash
+- Many years ago when Perl was popular for CGI web programming, display of the contents of _%ENV_ was a common exercise when getting started
+
+### GUI summary
+
+- Create a GUI using the widgets and geomtry managers - _pack_ here
+- Widgets such as list boxes can be populated by passing Perl objects to options - $lbx->insert('end', keys %ENV);
+- Event handlers can be attached to widgets as anonymous subroutines - 	-command => sub{ ....
+- Event handlers can delegate to non-GUI subroutines -  my $env_key = get_selected_opt($lbx);
+- Widget options can be configured dynamically by event handlers -  $lbl->configure(-text => $ENV{ $env_key })}
+
+The GUI discussed here actually does something useful besides show-casing some general GUI techniques. That said, it wins no awards for style yet there
+is a more important point: it is not written in a way that scales. Yes, the _get_selected_opt_ is standalone and potentially re-usable and that is a good thing.
+But effective GUI programming is not like throwing together a quick-and-dirty script because there is inherent complexity in dealing with:
+
+- GUI layout
+- Callback code
+- Attachment of events
+- Setting and getting data values in the GUI
+
+Once any script starts to grow in size, it benefits from:
+- Planning and up-front design
+- Separation of concerns
+- Testing
+
+This is especially true of GUIs. Making user-friendly GUIs that are rich in functionality, maintainable and extensible is not easy regardless of the library or
+programming language used to implement them. If we addeda few more widgets and actions to the example given above, it would quickly become unwieldy and difficult
+to reason about. GUIs are one area of software development where object oriented language features shine in reducing repetitive code and making the applications
+more robust and easier to reason about. In the examples that follow, we will even see examples where inheritance is practical.
 
