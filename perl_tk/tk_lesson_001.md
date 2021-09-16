@@ -59,7 +59,7 @@ MainLoop();
 ```
 
 - Passing two options to the _pack_ method changes the GUI's behavious when the widget is re-sized
-- "When widgets are packed, we can specify whether a widget should expand to take up all available space, and if so, how it should stretch to fill that space. By default, widgets are not expanded when their parent is. But in this script, the names YES and BOTH (imported from the tkinter module) specify that the label should grow along with its parent, the main window." 
+- "__When widgets are packed, we can specify whether a widget should expand to take up all available space, and if so, how it should stretch to fill that space. By default, widgets are not expanded when their parent is. But in this script, the names YES and BOTH (imported from the tkinter module) specify that the label should grow along with its parent, the main window.__" 
 - Stretching the GUI produces the image shown below with the label text now centered. Try running the script and changing the options passed to _pack_ and observe how the
 behaviour changes
 
