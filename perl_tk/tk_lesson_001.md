@@ -22,7 +22,7 @@ MainLoop();
 
 - Running the Perl code above produces the GUI below:
 
-![Hello, world!](./imgs/lesson001_eg001.png "Hello, world!")
+![Hello, world!](https://github.com/Rotifer/tk/blob/main/perl_tk/img/lesson001_eg001.png)
 
 - Will look different on a different OS
 - GUI can be re-sized 
