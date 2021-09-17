@@ -125,6 +125,9 @@ Here is a GUI that actually does something useful and demonstrates the central f
 - Event handlers can delegate to non-GUI subroutines -  my $env_key = get_selected_opt($lbx);
 - Widget options can be configured dynamically by event handlers -  $lbl->configure(-text => $ENV{ $env_key })}
 
+Event handlers and callbacks
+
+
 The GUI discussed here actually does something useful besides show-casing some general GUI techniques. That said, it wins no awards for style yet there
 is a more important point: it is not written in a way that scales. Yes, the _get_selected_opt_ is standalone and potentially re-usable and that is a good thing.
 But effective GUI programming is not like throwing together a quick-and-dirty script because there is inherent complexity in dealing with:
@@ -140,7 +143,10 @@ Once any script starts to grow in size, it benefits from:
 - Testing
 
 This is especially true of GUIs. Making user-friendly GUIs that are rich in functionality, maintainable and extensible is not easy regardless of the library or
-programming language used to implement them. If we addeda few more widgets and actions to the example given above, it would quickly become unwieldy and difficult
+programming language used to implement them. If we added a few more widgets and actions to the example given above, it would quickly become unwieldy and difficult
 to reason about. GUIs are one area of software development where object oriented language features shine in reducing repetitive code and making the applications
 more robust and easier to reason about. In the examples that follow, we will even see examples where inheritance is practical.
 
+E> ## This is an Error
+E>
+E> Describe a common Error here.
