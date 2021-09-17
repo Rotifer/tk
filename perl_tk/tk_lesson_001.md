@@ -125,8 +125,20 @@ Here is a GUI that actually does something useful and demonstrates the central f
 - Event handlers can delegate to non-GUI subroutines -  my $env_key = get_selected_opt($lbx);
 - Widget options can be configured dynamically by event handlers -  $lbl->configure(-text => $ENV{ $env_key })}
 
-Event handlers and callbacks
+### Note on event handlers
+The event handler concept is one of the trickiest to master in GUI development. In the example above, the handler is the anonymous
+subroutine of the _-command_ option. That anonymous subroutine is an example of a __callback__ function. Note that it does not execute
+when the GUI is loaded; it executes when the __event__, a button click in the given examle, occurs. 
 
+In summary: 
+- The event is some is something that happens such as a button is clicked by the user
+- A handler is code that is executed in response to the event
+
+
+__"For Button press callbacks, callback handlers always receive no arguments (other than an automatic self, for bound methods); any state information required by the callback handler must be provided in other ways—as global variables, class instance attributes, extra arguments provided by an indirection layer, and so on.
+"__
+
+### Note on application development
 
 The GUI discussed here actually does something useful besides show-casing some general GUI techniques. That said, it wins no awards for style yet there
 is a more important point: it is not written in a way that scales. Yes, the _get_selected_opt_ is standalone and potentially re-usable and that is a good thing.
@@ -147,6 +159,3 @@ programming language used to implement them. If we added a few more widgets and 
 to reason about. GUIs are one area of software development where object oriented language features shine in reducing repetitive code and making the applications
 more robust and easier to reason about. In the examples that follow, we will even see examples where inheritance is practical.
 
-E> ## This is an Error
-E>
-E> Describe a common Error here.
