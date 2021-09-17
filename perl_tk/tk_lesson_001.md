@@ -138,6 +138,8 @@ In summary:
 __"For Button press callbacks, callback handlers always receive no arguments (other than an automatic self, for bound methods); any state information required by the callback handler must be provided in other ways—as global variables, class instance attributes, extra arguments provided by an indirection layer, and so on.
 "__
 
+__"Although tkinter invokes command callbacks with no arguments, such a lambda can be used to provide an indirect anonymous function that wraps the real handler call and passes along information that existed when the GUI was first constructed."__
+
 ### Note on application development
 
 The GUI discussed here actually does something useful besides show-casing some general GUI techniques. That said, it wins no awards for style yet there
