@@ -68,7 +68,8 @@ and _$name_ by passing a __reference__ to each variable to the _textvariable_ op
 - These subroutine references are the __event handlers__ for the button _click_ event
 - To make the widgets visible, we need to call a geometry manager
 - Here we use the _grid_ manager by calling each widget's _grid_ method passing in a row and column index
-- The widgets appear on the GUI in the order in which their _grid_ methods were called.
+- The widgets appear on the GUI in the order in which their _grid_ methods were called
+- Call the _MainLoop()_ method to display the GUI
 - The default event for a button in Tk is _click_ so we did not have to specify it here
 - When the button labelled 'Store Data' is clicked, it event handler _store_data_ is invoked
 - The _store_data_ subroutine can access the _Entry_ widget instance text values via the variable references associated with the _textvariable_ options
@@ -86,5 +87,30 @@ and _$name_ by passing a __reference__ to each variable to the _textvariable_ op
 - You can think of the grid it creates like a spreadsheet or an HTML table
 - The _grid_ cells can be composed of one or more columns or rows by setting the _-rowspan_ or _-columnspan_ options
 - The code example above sets the _-columnspan_ option for the _$lbl_feedback_ label to 2
+
+### What this GUI shows
+
+- The GUI we have produced here is basic and functional
+- It exemplifies many of the major themes of general GUI development:
+	1. Creating GUI widgets
+	2. Using a geometry manager to lay the widgets out and display them on the GUI
+	3. Attaching event handlers to widget events such as button clicks
+	4. Getting user input and doing something with it
+	5. Giving the user feedback
+
+### GUI improvements
+
+- We could add a GUI main window title
+- Widget options could be set to make it look better
+- A database would be a better storage location than a flat file
+- there is no data validation: The _Entry_ for age implies a number but any text value can be entered here
+- All of these improvements will be implemented in later lessons
+
+### Coding style issues
+
+- There are multiple problems with the code layout here
+- For a small GUI such as this, it isn't such an issue but for larger more complex GUIs, it would be highly problematic
+- I will show in later lessons how object oriented approaches can make GUI development easier and more scalable
+
 
 
