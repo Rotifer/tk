@@ -1,0 +1,9 @@
+35	James
+54	Anne
+32	Kim
+67	Reg
+21	Lee
+	
+	
+29	Hank
+Elvis	42
