@@ -66,6 +66,9 @@ and _$name_ by passing a __reference__ to each variable to the _textvariable_ op
 - Assign actions to the buttons assigning subrountine __references__ to their _-command_ options
 - One button _-command_ option is passed an _anonymous_ subroutine wihle the second is passed a reference to a named subroutine (_\&store_data_)
 - These subroutine references are the __event handlers__ for the button _click_ event
+- To make the widgets visible, we need to call a geometry manager
+- Here we use the _grid_ manager by calling each widget's _grid_ method passing in a row and column index
+- The widgets appear on the GUI in the order in which their _grid_ methods were called.
 - The default event for a button in Tk is _click_ so we did not have to specify it here
 - When the button labelled 'Store Data' is clicked, it event handler _store_data_ is invoked
 - The _store_data_ subroutine can access the _Entry_ widget instance text values via the variable references associated with the _textvariable_ options
@@ -73,4 +76,15 @@ and _$name_ by passing a __reference__ to each variable to the _textvariable_ op
 - When the 'Store Data' button is clicked, the _configure_ method of the third label is called with feedback on the action taken
 - The two variables associated with the _Entry_ widget values are re-set to empty strings and the file is closed
 - The GUI is then ready for another set of data entry or can be closed by clicking the 'Exit' button
+
+### The _grid_ geometry manager
+
+- I find _grid_ to be easier than the alternative _pack_ geometry manager
+- Most of the examples from now on will use _grid_
+- There is a third alernative called _place_ which I do not discuss
+- The _grid_ manager treats the available space as a set of cells where each cell is specified by zero-based row and column indices rather like a spreadsheet
+- You can think of the grid it creates like a spreadsheet or an HTML table
+- The _grid_ cells can be composed of one or more columns or rows by setting the _-rowspan_ or _-columnspan_ options
+- The code example above sets the _-columnspan_ option for the _$lbl_feedback_ label to 2
+
 
