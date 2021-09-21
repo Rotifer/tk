@@ -8,17 +8,17 @@ sub new {
     $self->{MW} = MainWindow->new(-width => 800, -height => 600, -title => 'Regular Expression Tester');
     bless $self, $class;
     $self->setup_gui();
-    #$self->setup_regex_options();
     return $self;
 }
 
+# Creates the GUI layout and adds the widgets
 sub setup_gui{
     my $self = shift;
     my $lbl_regex =  $self->{MW}->Label(-text => 'Regular Expression');
     $lbl_regex->grid(-row => 0, -column => 0, -sticky => 'w');
     $self->{txt_regex} = $self->{MW}->Text(-height => 3, -background => 'white'); 
     $self->{txt_regex}->grid(-row => 1, -columnspan => 4);
-    $self->{btn_open_regex} =  $self->{MW}->Button(-text => 'Open Regex');
+    $self->{btn_open_regex} =  $self->{MW}->Button(-text => 'Open Regex', -command => sub {$self->open_regex_file()});
     $self->{btn_open_regex}->grid(-row => 2, -column => 0); 
     $self->{btn_save_regex} =  $self->{MW}->Button(-text => 'Save Regex');
     $self->{btn_save_regex}->grid(-row => 2, -column => 1); 
@@ -44,7 +44,18 @@ sub setup_gui{
     $self->{btn_matches}->grid(-row => 9, -column => 3);     
 }
 
-
+sub open_regex_file {
+    my $self = shift;
+    say ref $self;
+    my $answer = $self->{MW}->Dialog(-title =>  'Read regex file', 
+	                             -text => 'Open Regex file', 
+				     -default_button => 'yes', 
+				     -buttons => [ 'yes', 'no'], 
+				     -bitmap => 'question' )->Show();
+    if ($answer eq 'yes') {
+         $self->{txt_regex}->configure(-text => $answer);
+    }
+}
 my $regex_tester = RegexTester->new();
 MainLoop();
 
