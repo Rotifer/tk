@@ -39,6 +39,6 @@ MainLoop();
 
 When executed, the code above produces the GUI shown below (I have stretched it out by selecting the bottom right edge and dragging the cursor)
 
-![Display _%ENV_ values](https://github.com/Rotifer/tk/blob/main/perl_tk/img/lesson002_eg001.png)
+![GUI made with a class](https://github.com/Rotifer/tk/blob/main/perl_tk/img/lesson003_eg001.png)
 
 
