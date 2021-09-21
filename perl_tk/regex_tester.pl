@@ -1,5 +1,6 @@
 package RegexTester;
 use Tk;
+use Tk::FileSelect;
 use Modern::Perl;
 
 sub new {
@@ -44,17 +45,19 @@ sub setup_gui{
     $self->{btn_matches}->grid(-row => 9, -column => 3);     
 }
 
+# http://www.java2s.com/Code/Perl/GUI/GetselectedFilefromFileDialog.htm
 sub open_regex_file {
     my $self = shift;
-    say ref $self;
-    my $answer = $self->{MW}->Dialog(-title =>  'Read regex file', 
-	                             -text => 'Open Regex file', 
-				     -default_button => 'yes', 
-				     -buttons => [ 'yes', 'no'], 
-				     -bitmap => 'question' )->Show();
-    if ($answer eq 'yes') {
-         $self->{txt_regex}->configure(-text => $answer);
-    }
+    my $file_dialog = $self->{MW}->FileSelect(-directory => '.');
+    my $file_name = $file_dialog->Show();
+    if ($file_name ne '' ) {
+        open (my $fh, '<', $file_name);
+        $self->{txt_regex}->delete('1.0', 'end');
+        while (my $line = <$fh>) {
+             $self->{txt_regex}->insert("end", $line);
+        }
+        close($fh);
+    }	
 }
 my $regex_tester = RegexTester->new();
 MainLoop();
